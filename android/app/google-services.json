@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "674401604119",
+    "project_id": "aran-475b4",
+    "storage_bucket": "aran-475b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674401604119:android:726cd7f5a04cc26b978252",
+        "android_client_info": {
+          "package_name": "com.aran.aran"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyZNNTfV-CnGHgTAXwIpjr06fXdH_LLwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674401604119:android:a203d7a57e83c3ee978252",
+        "android_client_info": {
+          "package_name": "com.example.aran"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyZNNTfV-CnGHgTAXwIpjr06fXdH_LLwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
