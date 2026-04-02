@@ -45,6 +45,7 @@ dependencies:
   audioplayers: ^5.1.0
   kiosk_mode: any
   flutter_background_service: ^5.0.10
+  flutter_plugin_android_lifecycle: ^2.0.24
 
 dev_dependencies:
   flutter_test:
