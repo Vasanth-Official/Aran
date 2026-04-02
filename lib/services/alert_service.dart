@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:telephony/telephony.dart';
+import 'package:direct_sms/direct_sms.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'storage_service.dart';
 
 class AlertService {
   final DatabaseReference _dbRef = FirebaseDatabase.instance.ref();
-  final Telephony _telephony = Telephony.instance;
+  final DirectSms _directSms = DirectSms();
   final AudioPlayer _audioPlayer = AudioPlayer();
   StreamSubscription<Position>? _positionStream;
 
@@ -59,9 +59,9 @@ class AlertService {
 
     for (String contact in emergencyContacts) {
       try {
-        await _telephony.sendSms(
-          to: contact,
+        _directSms.sendSms(
           message: "SOS! I need help. I have triggered the Aran Protection app. My live location is being tracked.",
+          phone: contact,
         );
       } catch (e) {
         // Log Error or silently fail

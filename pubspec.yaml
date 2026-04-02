@@ -31,7 +31,7 @@ dependencies:
 
   # Communication
   url_launcher: ^6.3.1
-  telephony: ^0.2.0
+  direct_sms: ^0.0.1
 
   # Storage & State
   shared_preferences: any
