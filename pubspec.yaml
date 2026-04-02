@@ -44,7 +44,7 @@ dependencies:
   lottie: any
   audioplayers: ^5.1.0
   kiosk_mode: any
-  flutter_background_service: ^3.0.0
+  flutter_background_service: ^5.0.10
 
 dev_dependencies:
   flutter_test:
