@@ -1,0 +1,17 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace "io.flutter.compatibility"
+    compileSdk 34
+
+    defaultConfig {
+        minSdkVersion 21
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

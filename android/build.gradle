@@ -1,3 +1,5 @@
+def compatibilityStubsDir = project(':compatibility_stubs').projectDir
+
 allprojects {
     repositories {
         google()
@@ -20,9 +22,13 @@ subprojects {
 
 subprojects {
     afterEvaluate { project ->
-        if (project.hasProperty('android')) {
+        if (project.hasProperty('android') && project.name != 'compatibility_stubs') {
+            // Inject the stubs module into all Android projects to satisfy legacy V1 embedding references
+            project.dependencies {
+                implementation project(':compatibility_stubs')
+            }
+            
             if (project.android.namespace == null) {
-                // Determine namespace from package name if not explicitly set (required for AGP 8+)
                 project.android.namespace = project.group
             }
         }
@@ -40,4 +46,3 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
-
