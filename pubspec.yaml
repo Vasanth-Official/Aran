@@ -34,7 +34,8 @@ dependencies:
   direct_sms: ^0.0.1
 
   # Storage & State
-  shared_preferences: any
+  shared_preferences: ^2.3.5
+  path_provider: ^2.1.5
   provider: any
 
   permission_handler: any
@@ -42,14 +43,17 @@ dependencies:
   # UI
   google_fonts: ^6.2.1
   lottie: any
-  audioplayers: ^6.1.0
+  audioplayers: ^5.2.1
   kiosk_mode: any
   flutter_background_service: ^5.0.10
   flutter_plugin_android_lifecycle: ^2.0.24
 
 dependency_overrides:
-  google_maps_flutter_android: ^2.14.3
-  flutter_plugin_android_lifecycle: ^2.0.24
+  google_maps_flutter_android: ^2.19.5
+  flutter_plugin_android_lifecycle: ^2.0.34
+  path_provider_android: ^2.2.23
+  shared_preferences_android: ^2.4.1
+  firebase_messaging_android: ^5.2.1
 
 dev_dependencies:
   flutter_test:
