@@ -53,7 +53,6 @@ dependency_overrides:
   flutter_plugin_android_lifecycle: ^2.0.34
   path_provider_android: ^2.2.23
   shared_preferences_android: ^2.4.1
-  firebase_messaging_android: ^5.2.1
 
 dev_dependencies:
   flutter_test:
