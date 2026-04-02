@@ -20,14 +20,14 @@ dependencies:
   firebase_messaging: any
 
   # Location & Maps
-  geolocator: any
-  google_maps_flutter: any
+  geolocator: ^13.0.1
+  google_maps_flutter: ^2.10.0
 
   # Sensors & Detection
   sensors_plus: ^6.1.1
 
   # Notifications
-  flutter_local_notifications: any
+  flutter_local_notifications: ^17.2.1
 
   # Communication
   url_launcher: ^6.3.1
@@ -42,9 +42,13 @@ dependencies:
   # UI
   google_fonts: ^6.2.1
   lottie: any
-  audioplayers: ^5.1.0
+  audioplayers: ^6.1.0
   kiosk_mode: any
   flutter_background_service: ^5.0.10
+  flutter_plugin_android_lifecycle: ^2.0.24
+
+dependency_overrides:
+  google_maps_flutter_android: ^2.14.3
   flutter_plugin_android_lifecycle: ^2.0.24
 
 dev_dependencies:
