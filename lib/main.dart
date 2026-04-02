@@ -4,6 +4,7 @@ import 'firebase_options.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'services/storage_service.dart';
+import 'services/background_service.dart';
 import 'utils/constants.dart';
 
 void main() async {
@@ -14,6 +15,7 @@ void main() async {
   );
   
   await StorageService().init();
+  await initializeBackgroundService();
 
   runApp(const AranApp());
 }

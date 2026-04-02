@@ -48,7 +48,7 @@ class _SosTriggerScreenState extends State<SosTriggerScreen> with SingleTickerPr
   final AlertService _alertService = AlertService();
 
   void _triggerSos() {
-    _alertService.triggerSOS('demo_user_123'); // Demo user id
+    _alertService.triggerSOS('Vasanth-Official'); // Use user's ID
     // Navigate to Kiosk Lock Screen uniquely and clear stack
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => const KioskLockScreen()),

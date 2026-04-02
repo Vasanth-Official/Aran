@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kiosk_mode/kiosk_mode.dart';
 import '../utils/constants.dart';
 import '../services/alert_service.dart';
 import '../services/storage_service.dart';
@@ -19,14 +20,16 @@ class _KioskLockScreenState extends State<KioskLockScreen> {
   @override
   void initState() {
     super.initState();
-    // Enter full screen
+    // Enter full screen and lock phone via kiosk mode
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    startKioskMode();
   }
 
   @override
   void dispose() {
-    // Exit full screen
+    // Exit full screen and unlock kiosk
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    stopKioskMode();
     _safeWordController.dispose();
     super.dispose();
   }

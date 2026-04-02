@@ -2,14 +2,19 @@ import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:telephony/telephony.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'storage_service.dart';
 
 class AlertService {
   final DatabaseReference _dbRef = FirebaseDatabase.instance.ref();
   final Telephony _telephony = Telephony.instance;
+  final AudioPlayer _audioPlayer = AudioPlayer();
   StreamSubscription<Position>? _positionStream;
 
   Future<void> triggerSOS(String userId) async {
+    // 0. Start Loud Siren regardless of silent mode
+    _audioPlayer.setReleaseMode(ReleaseMode.loop);
+    await _audioPlayer.play(UrlSource('https://actions.google.com/sounds/v1/alarms/bugle_tune.ogg'));
     // 1. Get permissions
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) return;
@@ -36,6 +41,18 @@ class AlertService {
       });
     });
 
+    _dbRef.child('alerts').child(userId).onValue.listen((event) {
+      if (event.snapshot.value != null) {
+        final data = Map<String, dynamic>.from(event.snapshot.value as Map);
+        if (data['remote_siren'] == true && data['status'] == 'ACTIVE') {
+          if (_audioPlayer.state != PlayerState.playing) {
+            _audioPlayer.setReleaseMode(ReleaseMode.loop);
+            _audioPlayer.play(UrlSource('https://actions.google.com/sounds/v1/alarms/bugle_tune.ogg'));
+          }
+        }
+      }
+    });
+
     // 3. Send SMS to emergency contacts fallback
     List<String> emergencyContacts = StorageService().emergencyContacts;
     if (emergencyContacts.isEmpty) emergencyContacts = ["+1234567890"];
@@ -53,6 +70,7 @@ class AlertService {
   }
 
   void stopSOS(String userId) {
+    _audioPlayer.stop();
     _positionStream?.cancel();
     _dbRef.child('alerts').child(userId).update({
       'status': 'RESOLVED',
